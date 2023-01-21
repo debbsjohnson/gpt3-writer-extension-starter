@@ -1,6 +1,6 @@
 {
-  "name": "GPT-3 Writer",
-  "description": "Write a blog post in the style of your favorite thinker anywhere!",
+  "name": "ALUCARD",
+  "description": "google on a budget",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -10,7 +10,20 @@
     "144": "assets/144.png"
   },
   "action": {
-    "default_popup": "index.html",
-    "default_title": "Generate blog post"
-  }
+    "default_popup": "./index.html",
+    "default_title": "ALUCARD GO"
+  },
+
+  "background": {
+    "service_worker": "./scripts/contextMenuServiceWorker.js"
+  },
+  "permissions": ["contextMenus", "tabs", "storage"],
+
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["./scripts/content.js"]
+    }
+  ]
 }
