@@ -58,9 +58,7 @@ const generateCompletionAction = async (info) => {
 
 		const { selectionText } = info;
 		const basePromptPrefix = `
-      Write me a detailed table of contents for a blog post with the title below.
-  
-      Title:
+        Be able to converse, understand skin types and give detailed solutions and product suggestions for skin conditions and skin types
       `;
 
 		const baseCompletion = await generate(
@@ -69,13 +67,13 @@ const generateCompletionAction = async (info) => {
     console.log('completed!')
 
 		const secondPrompt = `
-        Take the table of contents and title of the blog post below and generate a blog post written in thwe style of Paul Graham. Make it feel like a story. Don't just list the points. Go deep into each one. Explain why.
+        Take the contents of said skin type and condition post below and generate detailed solutions and product names and suggestions in the style of world best dermatologists. Make it feel like a conversation and prescription. Don't just list the points. Go deep into each one. Explain why.
         
-        Title: ${selectionText}
+        Question/Statement: ${selectionText}
         
-        Table of Contents: ${baseCompletion.text}
+        Contents: ${baseCompletion.text}
         
-        Blog Post:
+        Response/Solution:
         `;
 
 		const secondPromptCompletion = await generate(secondPrompt);
